@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb://michael:bear123@ds231207.mlab.com:31207/pip_producer",
+    "JWT_SECRET": "&C8dfh7e^A^ei(e78aS^wYe^E$)_(37&#*(DOi#a)@&3c8H1d)__37*UiJ&3m37r738ue_012"
+}
