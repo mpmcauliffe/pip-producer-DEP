@@ -20,9 +20,9 @@ connectDB()
 //app.use(bodyParser.json())
 app.use(express.json({ extended: false }))
 
-app.get('/', (req, res) => {
-    res.json({ msg: 'welcome to the pip-producer'})
-})
+// app.get('/', (req, res) => {
+//     res.json({ msg: 'welcome to the pip-producer'})
+// })
 
 
 /* API */
