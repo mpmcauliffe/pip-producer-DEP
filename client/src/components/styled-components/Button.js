@@ -8,8 +8,8 @@ export const Button = styled.button`
     font-size: 2.1rem;
     max-height: ${props => (props.pip ? '20vh' : '10vh')};
     color: ${props => (props.pip ? '#ababab' : '#DAA520')};
-    padding: 2rem 3rem;
-    background: ${props => (props.pip ? 'none' : '#494949')};
+    padding: 2.5vh 3rem;
+    background: ${props => (props.pip ? 'none' : '#393939')}; /*#494949*/
     border: ${props => (props.pip ? '.1rem solid #dedede' : 'none')};
     border-radius: .5rem;
     transition: 500ms;
@@ -30,7 +30,7 @@ export const ButtonSet = styled.button`
     font-weight: 400;
     font-size: 2.1rem;
     max-height: 10vh;
-    padding: 2rem 3rem;
+    padding: 2vh 3rem;
     color: ${props => (props.active ? '#393939' : '#DAA520')};
     background: ${props => (props.active ? '#DAA520' : '#393939')};
     border: none;
@@ -42,6 +42,6 @@ export const ButtonSet = styled.button`
     }
 
     @media (max-width:769px) {
-        width: 50%;
+    
     }
 `

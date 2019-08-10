@@ -7,7 +7,11 @@ export const MainContainer = styled.div`
     margin: 5rem auto; 
     padding-bottom: 100vh;
 
-    @media (max-width:769px) {
+    @media (max-width: 1300px) {
+        width: 80vw;
+    }
+
+    @media (max-width: 769px) {
         width: 33rem;
         margin: 0;
     }

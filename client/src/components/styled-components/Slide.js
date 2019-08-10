@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 export const Slide = styled.div`
     display: flex;
-    margin: 2rem auto 0 auto;
+    margin-top: 2rem;
     height: 27rem;
-    width: 99rem;
+    width: 100%;
     min-width: 35rem;
     padding: 3rem;
     color: ${props => (props.published ? '#d9d9d9' : '#494949')};
@@ -35,10 +35,10 @@ export const SlideContainer = styled.div`
 export const UserContainer = styled.div`
     display: flex; 
     height: 6rem;
-    width: 99rem;  
+    width: 100%;  
     justify-content: space-between;
     align-items: center;
-    padding: 3rem;
+    padding: 2rem;
     color: #fbfbfb;
     background: ${props => (props.published ? '#494949' : '#d9d9d9')};
     border-bottom: .1rem solid #fbfbfb; 
