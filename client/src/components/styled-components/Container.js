@@ -5,7 +5,7 @@ export const MainContainer = styled.div`
     width: 60vw; 
     min-height: 5rem; 
     margin: 5rem auto; 
-    padding-bottom: 100vh;
+    padding-bottom: 50vh;
 
     @media (max-width: 1300px) {
         width: 80vw;
@@ -14,6 +14,7 @@ export const MainContainer = styled.div`
     @media (max-width: 769px) {
         width: 100vw;
         margin: 0;
+        padding-bottom: 20vh;
     }
 `
 
@@ -21,7 +22,7 @@ export const FormContainer = styled.div`
     width: 60vw; 
     min-height: 5rem; 
     margin: 5rem auto; 
-    padding-bottom: 100vh;
+    padding-bottom: 50vh;
 
     @media (max-width: 1024px) {
         width: 80vw;
@@ -29,6 +30,7 @@ export const FormContainer = styled.div`
 
     @media (max-width: 769px) {
         width: 95vw;
+        padding-bottom: 20vh;
     }
 `
 

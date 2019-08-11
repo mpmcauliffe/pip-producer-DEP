@@ -2,13 +2,12 @@ import React, { Fragment, useEffect, useContext, useState, } from 'react'
 import AuthContext from '../../context/auth/authContext'
 import ArticleContext from '../../context/articleContext/articleContext'
 import { Link, } from 'react-router-dom'
-import { ArticleTypeToggle, Scorebar, } from '../react-components'
+import { ArticleTypeToggle, BackToTop, EditBar, Scorebar, } from '../react-components'
 import {  
     MainContainer, 
     Slide, 
     SlideContainer, 
-    Thumbnail, 
-    UserContainer, } from '../styled-components'
+    Thumbnail, } from '../styled-components'
 import Loading from '../loading/Loading'
 import moment from 'moment'
 import { truncate, } from '../../helpers'
@@ -19,7 +18,7 @@ const ListPage = () => {
     const { loadUser, user, } = authContext
 
     const articleContext = useContext(ArticleContext)
-    const { getArticles, type, deleteArticle, filterByType, clearSingle, articles, getSingle } = articleContext
+    const { getArticles, type, filterByType, clearSingle, articles, } = articleContext
 
     useEffect(() => {
         loadUser()
@@ -51,7 +50,7 @@ const ListPage = () => {
 
                             <Slide published={article.isPublished}>
                                 <SlideContainer>
-                                    <h2>{window.innerWidth > 768 ? truncate(article.title, 50) : truncate(article.title, 40)}</h2>
+                                    <h2>{window.innerWidth > 768 ? truncate(article.title, 50) : truncate(article.title, 35)}</h2>
                                     <h4><em>Author: </em>{article.author}</h4>
                                     <h4><em>Date: </em>{moment(article.date).format('MMMM Do YYYY')}</h4>
                                 </SlideContainer>
@@ -62,32 +61,14 @@ const ListPage = () => {
                             </Slide>
                         </Link>
 
-                        {user.role === 'admin' || article.user === user._id 
-
-                            ?   (
-                                    <UserContainer published={article.isPublished}> 
-                                        
-                                        <Link 
-                                            to={`/create/${article._id}/${user._id}`} 
-                                            onClick={() => getSingle(article._id, user._id)}
-                                            style={{ textDecoration: 'none', }}
-
-                                        >   <p className='small-use edit-use'>Edit</p>
-                                        </Link>
-
-                                        <p
-                                            onClick={() => deleteArticle(article._id)} 
-                                            className='small-use delete-use'
-                                        >   Delete
-                                        </p>
-                                    </UserContainer>
-                                ) : (
-                                    null
-                                )
-                        }                     
+                        <EditBar 
+                            user={user} 
+                            article={article} />                   
                     </Fragment>                       
                     ))
                 }
+
+                <BackToTop />
             </MainContainer>
         )
     }    
@@ -95,10 +76,3 @@ const ListPage = () => {
 
 
 export { ListPage }
-
-
-/**
- * 
- * className='user-card' 
-                                        style={{ width: '99rem', padding: '0 3rem', }}>
- */

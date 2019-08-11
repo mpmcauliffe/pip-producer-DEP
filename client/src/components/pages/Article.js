@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, } from 'react'
 import ArticleContext from '../../context/articleContext/articleContext'
-import { CoverImage, MainContainer, } from '../styled-components'
+import { CoverImage, FormContainer, } from '../styled-components'
+import { BackToTop, } from '../react-components'
 import Loading from '../loading/Loading'
 import moment from 'moment'
 
@@ -21,11 +22,11 @@ const Article = props => {
         return <Loading />
     } else {
         return (
-            <MainContainer style={{ margin: '3rem auto', }}>
+            <FormContainer>
                 <CoverImage 
                     src={single.picture} 
                     alt='img' 
-                    style={{ margin: '0 auto', maxHeight: '80vh' }} />
+                    style={{ margin: '2 auto', maxHeight: '80vh' }} />
 
                 <h2>{single.title}</h2>
                 <br />
@@ -35,8 +36,10 @@ const Article = props => {
                 <hr />
                 <br /><br /><br /><br /><br />
 
-                <pre>{single.content}</pre>                    
-            </MainContainer>            
+                <pre>{single.content}</pre>   
+                
+                <BackToTop />
+            </FormContainer>            
         )
     }
 }

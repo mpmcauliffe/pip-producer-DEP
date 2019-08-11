@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const CoverImage = styled.img`
     max-height: 70rem
     width: 100%;
-    margin: 3rem 0 9rem 0;
+    margin: .5rem 0 2rem 0;
 `
 
 export const Thumbnail = styled.img`

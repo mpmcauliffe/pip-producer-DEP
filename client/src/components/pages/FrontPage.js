@@ -1,6 +1,6 @@
 import React, { Fragment, } from 'react'
 import { MainLogo, } from '../styled-components'
-import { PipButton, Scorebar, } from '../react-components'
+import { BackToTop, PipButton, Scorebar, } from '../react-components'
 
 
 const FrontPage = () => {
@@ -157,6 +157,7 @@ const FrontPage = () => {
                 nec finibus eros scelerisque.</p>
             </div>
             
+            <BackToTop />
         </Fragment>
     )
 }

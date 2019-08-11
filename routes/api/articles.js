@@ -36,7 +36,7 @@ router.get('/:id', auth, async (req, res) => {
 // @desc  Create A article
 // @access Public
 router.post('/', auth, (req, res) => {
-    const { title, author, date, imagePath, content, isPublished, } = req.body
+    const { title, author, date, picture, content, isPublished, } = req.body
 
     console.log(date)
     const newArticle = new Article({
@@ -44,7 +44,7 @@ router.post('/', auth, (req, res) => {
         title: title,
         author: author,
         date: date,
-        picture: imagePath,
+        picture: picture,
         content: content,
         isPublished: isPublished
     })
@@ -74,14 +74,14 @@ router.get('/:articleId/:userId', auth, async (req, res) => {
 // @desc        Update article
 // @access      Private
 router.put('/:id', auth, async (req, res) => {
-    const { title, author, date, imagePath, content, isPublished, } = req.body
+    const { title, author, date, picture, content, isPublished, } = req.body
 
     const updatedFields = {}
 
     if (title) updatedFields.title             = title
     if (author) updatedFields.author           = author
     if (date) updatedFields.date               = date
-    if (imagePath) updatedFields.picture       = imagePath
+    if (picture) updatedFields.picture         = picture
     if (content) updatedFields.content         = content
     if (isPublished) updatedFields.isPublished = isPublished
 
