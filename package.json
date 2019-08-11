@@ -1,5 +1,5 @@
 {
-  "name": "pip-api",
+  "name": "pip-producer",
   "version": "1.0.0",
   "description": "piece together pip-producer step by step for deployment",
   "main": "index.js",

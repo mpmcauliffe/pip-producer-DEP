@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ArticleContext from '../../context/articleContext/articleContext'
 import { FileUpload, } from '../react-components'
-import { Button, ButtonSet, MainContainer, } from '../styled-components'
+import { Button, ButtonSet, FormContainer, } from '../styled-components'
 import 'simplebar/dist/simplebar.min.css'
 
 
@@ -67,7 +67,7 @@ const Create = props => {
 
 
     return (
-        <MainContainer style={{ width: '95vw', margin: '3rem auto', }}>
+        <FormContainer style={{ margin: '3rem auto', }}>
             
             <form autoComplete='off'>
                 <input  /* TITLE */
@@ -152,7 +152,7 @@ const Create = props => {
                     </Button>
                 </div>
             </form>
-        </MainContainer>
+        </FormContainer>
     )
 }
 
