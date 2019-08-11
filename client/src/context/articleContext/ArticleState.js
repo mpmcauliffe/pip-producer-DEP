@@ -121,8 +121,8 @@ const ArticleState = props => {
                     payload - id of deleted article */
     const deleteArticle = async id => {
         try {
-            await axios.delete(`/api/articles/${id}`)
-
+            const res = await axios.delete(`/api/articles/${id}`)
+            
             dispatch({ 
                 type: DELETE_ARTICLE, 
                 payload: id

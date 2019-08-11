@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
     margin: 5rem auto; 
     padding-bottom: 100vh;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1300px) {
         width: 80vw;
     }
 
@@ -45,5 +45,6 @@ export const FadeContainer = styled.div`
     height: 89vh;
     width: 100%;
     top: 11vh;
-    background: rgba(255,255,255, .6);
+    background: ${props => (props.delete ? 'rgba(35,35,35, .6)' : 'rgba(255,255,255, .6)')};
 `
+//background: ${props => (props.pip ? 'none' : '#DAA520')};

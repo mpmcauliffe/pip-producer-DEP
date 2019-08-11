@@ -4,7 +4,7 @@ import { Button, } from '../styled-components'
 import axios from 'axios'
 
 
-const FileUpload = ({ setImagePath, }) => {
+const FileUpload = ({ setImagePath, picture }) => {
 
     const [ file, setFile ] = useState('') 
     const [ fileName, setFileName ] = useState('Choose A Cover Image') 
@@ -21,6 +21,8 @@ const FileUpload = ({ setImagePath, }) => {
             setMessage('Only .png, .jpg, .jpeg, and .svg files are acceptable')
         }
     }
+
+    console.log(typeof picture)
 
     const onSubmit = async e => {
         e.preventDefault()
@@ -47,6 +49,10 @@ const FileUpload = ({ setImagePath, }) => {
             setUploadedFile({ fileName, filePath })
             setMessage('File uploaded')
             console.log(filePath)
+
+            if (picture) {
+                picture = ''
+            }
 
             setImagePath(filePath)
         } catch(err) {
@@ -92,17 +98,19 @@ const FileUpload = ({ setImagePath, }) => {
 
             >   Upload
             </Button>
-            {uploadedFile && (
-                <div className='row mt-5'>
-                    <div className="col-md-6 m-auto">
-                        <h3 className="text-center">{uploadedFile.fileName}</h3>
-                        <img 
-                            src={uploadedFile.filePath} 
-                            alt=''
-                            style={{ width: '100%' }} />
-                    </div>
-                </div> 
-            )}
+            {uploadedFile || picture 
+                ?  (
+                        <div className='row mt-5'>
+                            <div className="col-md-6 m-auto">
+                                <h3 className="text-center">{picture ? '' : uploadedFile.fileName}</h3>
+                                <img 
+                                    src={picture ? picture : uploadedFile.filePath} 
+                                    alt=''
+                                    style={{ width: '100%' }} />
+                            </div>
+                        </div> 
+                ) : (null)   
+            }
         </Fragment>
     )
 }

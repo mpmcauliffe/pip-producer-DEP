@@ -14,7 +14,7 @@ const Create = props => {
         author: '',
         date: '',
         content: '', 
-        imagePath: '',
+        picture: '',
         isPublished: false,
     })
 
@@ -23,15 +23,15 @@ const Create = props => {
     useEffect(() => {
         if (single !== null) {
             setData(single[0])
-            console.log(single[0].isPublished)
             setButonActive(single[0].isPublished)
+            console.log(data.picture)
         } else {
             setData({
                 title: '',
                 author: '',
                 date: '',
                 content: '', 
-                imagePath: '',
+                picture: '',
                 isPublished: false,
             })
         }
@@ -48,7 +48,7 @@ const Create = props => {
         setButonActive(!buttonActive)
     }
     
-    const setImagePath = filePath => setData({ ...data, imagePath: filePath })
+    const setImagePath = filePath => setData({ ...data, picture: filePath })
     
 
     const submit = e => {
@@ -58,10 +58,10 @@ const Create = props => {
 
         if (single !== null) {
             console.log('article edit')
-            //updateArticle(data)
+            updateArticle(data)
         } else {
             console.log('article save')
-            //saveArticle(data)
+            saveArticle(data)
         }
     }
 
@@ -105,7 +105,7 @@ const Create = props => {
                         width: '100%', 
                         marginBottom: '10rem', }} />
 
-                <FileUpload setImagePath={setImagePath} />
+                <FileUpload setImagePath={setImagePath} picture={data.picture} />
                 
                 <textarea /* CONTENT */
                     value={data.content}
@@ -159,33 +159,3 @@ const Create = props => {
 
 export { Create }
  
-
-/**
- 
-                    <Button 
-                        onClick={submit} 
-                        name='publish'
-                        
-                    >   Publish
-                    </Button>
-
-                    <input
-                            type='radio'
-                            name='isPublished'
-                            value={false}
-                            checked={data.isPublished === false}
-                            onChange={onChange}
-                            className='form-radio' />  
-                        
-                        <h4 style={{ display: 'inline-block', marginRight: '5rem', }}>Draft</h4>
-
-                        <input
-                            type='radio' 
-                            name='isPublished'
-                            value={true}
-                            checked={data.isPublished === true}
-                            onChange={onChange}
-                            className='form-radio' />
-
-                        <h4 style={{ display: 'inline-block', }}>Publish</h4>
- */
