@@ -3,7 +3,7 @@ import ArticleContext from '../../context/articleContext/articleContext'
 import { ButtonSet, } from '../styled-components'
 
 
-const ArticleTypeToggle = () => {
+const ArticleTypeToggle = ({ user }) => {
     const articleContext = useContext(ArticleContext)
     const { filterByType, } = articleContext
 
@@ -29,29 +29,33 @@ const ArticleTypeToggle = () => {
         setDisplay(!display)
     }
 
+    if (user.role === 'user') {
+        return <h2>Articles</h2>
+    } else {
+        return (
+            <Fragment>
+                <ButtonSet
+                    draft
+                    name='isPublished'
+                    value={false}
+                    active={!display}
+                    onClick={toggleDisplay}                                   
 
-    return (
-        <Fragment>
-            <ButtonSet
-                draft
-                name='isPublished'
-                value={false}
-                active={!display}
-                onClick={toggleDisplay}                                   
+                >   Drafts
+                </ButtonSet>
 
-            >   Drafts
-            </ButtonSet>
+                <ButtonSet
+                    name='isPublished'
+                    value={true}
+                    active={display}
+                    onClick={toggleDisplay}
 
-            <ButtonSet
-                name='isPublished'
-                value={true}
-                active={display}
-                onClick={toggleDisplay}
-
-            >   Published
-            </ButtonSet>
-        </Fragment>
-    )
+                >   Published
+                </ButtonSet>
+            </Fragment>
+        )
+    }
+    
 }
 
 

@@ -41,7 +41,7 @@ export const ButtonSet = styled.button`
         outline: none;
     }
 
-    @media (max-width:769px) {
-    
+    @media (max-width: 769px) {
+        /* width: 100%; */
     }
 `

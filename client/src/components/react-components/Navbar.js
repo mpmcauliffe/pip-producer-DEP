@@ -1,13 +1,13 @@
 import React, { Fragment, useState, } from 'react'
 import { Link, } from 'react-router-dom'
 import { ButtonAssembly, Drawer, } from '../react-components'
-import { Bar, Button, SmallLogo, } from '../styled-components'
+import { Bar, ButtonSet, FadeContainer, SmallLogo, } from '../styled-components'
 
 
 const style = {
     menuRow: {
         display: 'flex',
-        width: '65vw', 
+        width: '100%', 
         justifyContent: 'flex-end',
     }
 }
@@ -16,20 +16,19 @@ const Navbar = props => {
     const [drawerVisible, setDrawer] = useState(false)
 
     const toggleDrawer = () => {
-        console.log('toggle')
         setDrawer(!drawerVisible)
     }
 
     const menu = (
         <div style={style.menuRow}>
-            <Button onClick={toggleDrawer}>Menu</Button>
+            <ButtonSet onClick={toggleDrawer}>Menu</ButtonSet>
         </div>
     )
 
     return (
         <Fragment>
             <Bar>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div style={{ display: 'flex', width: '100%', alignItems: 'center' }}>
                     <Link to='/'>
                         <SmallLogo src={require('../../assets/images/small_crest.png')} /> 
                     </Link>
@@ -40,7 +39,12 @@ const Navbar = props => {
                     }
                 </div>
             </Bar>
-            {drawerVisible && <Drawer toggleDrawer={toggleDrawer} />}
+            {drawerVisible && 
+                <Fragment>
+                    <Drawer onClick={toggleDrawer} />
+                    <FadeContainer onClick={toggleDrawer} />
+                </Fragment>    
+            }
         </Fragment>
         
     )

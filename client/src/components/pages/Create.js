@@ -67,7 +67,7 @@ const Create = props => {
 
 
     return (
-        <MainContainer style={{ margin: '3rem auto', }}>
+        <MainContainer style={{ width: '95vw', margin: '3rem auto', }}>
             
             <form autoComplete='off'>
                 <input  /* TITLE */

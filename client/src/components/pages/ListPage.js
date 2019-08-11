@@ -19,14 +19,13 @@ const ListPage = () => {
     const { loadUser, user, } = authContext
 
     const articleContext = useContext(ArticleContext)
-    const { getArticles, type, deleteArticle, clearSingle, articles, getSingle } = articleContext
+    const { getArticles, type, deleteArticle, filterByType, clearSingle, articles, getSingle } = articleContext
 
     useEffect(() => {
         loadUser()
         getArticles()
         clearSingle()
 
-        console.log(window.innerWidth)
         window.scrollTo(0,0)
 
     // eslint-disable-next-line
@@ -39,11 +38,10 @@ const ListPage = () => {
     } else {
         return (
             <MainContainer>
-                {user.role === 'admin' || user.role === 'contributor' 
-                    ? <ArticleTypeToggle /> : null
-                }
+                <div style={{ margin: '3vh auto' }}>
+                    <ArticleTypeToggle user={user} /> 
+                </div>
                 
-
                 {type !== null && 
                     type.map(article => (
                     <Fragment key={article._id}>

@@ -8,12 +8,12 @@ const Drawer = () => {
         <div 
             style={{ position: 'absolute', 
                 zIndex: 10,
-                height: '60vh', 
+                height: '89vh', 
                 width: '19rem', 
                 top: '11vh', 
                 right: 0,
                 padding: '3rem',
-                background: '#494949' }} >
+                background: '#393939' }} >
 
             <ButtonAssembly />
         </div>
