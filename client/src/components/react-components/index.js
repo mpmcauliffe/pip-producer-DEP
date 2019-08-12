@@ -1,5 +1,6 @@
 export * from './ArticleTypeToggle'
 export * from './BackToTop'
+export * from './BlogLink'
 export * from './ButtonAssembly'
 export * from './Drawer'
 export * from './EditBar'

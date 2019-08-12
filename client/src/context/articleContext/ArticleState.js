@@ -11,6 +11,7 @@ import {
     CLEAR_SINGLE,
     FILTER_BY_TYPE,
     CLEAR_TYPE,
+    NEXT_ARTICLES,
 } from '../types'
 
 
@@ -19,6 +20,7 @@ const ArticleState = props => {
         articles: null,
         single: null,
         type: null,
+        next: [],
     }
 
     const [state, dispatch] = useReducer(articleReducer, initialState)
@@ -138,6 +140,13 @@ const ArticleState = props => {
     // controls types array for published articles and drafts
     const filterByType = articleStatus => dispatch({ type: FILTER_BY_TYPE, payload: articleStatus, })
 
+    // controls next array for article links to appear at bottom of article
+    const getNextArticles = id => {
+        if (state.articles !== null) {
+            dispatch({ type: NEXT_ARTICLES, payload: id }) 
+        }
+    }
+
 
     return (
         <ArticleContext.Provider
@@ -145,6 +154,7 @@ const ArticleState = props => {
                 articles: state.articles,
                 single: state.single,
                 type: state.type,
+                next: state.next,
                 getArticles,
                 getSingle,
                 saveArticle,
@@ -152,7 +162,7 @@ const ArticleState = props => {
                 deleteArticle,
                 clearSingle,
                 filterByType,
-                 }}
+                getNextArticles, }}
 
         >   {props.children}
         </ArticleContext.Provider>

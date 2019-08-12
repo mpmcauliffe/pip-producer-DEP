@@ -10,7 +10,7 @@ const BackToTop = () => {
     return (
         <h5
             onClick={toTop}
-            style={{ textAlign: 'center', marginTop: '3rem', color: '#930000' }}
+            style={{ textAlign: 'center', margin: '6rem 0', color: '#930000' }}
 
         >   back to top &uarr; 
         </h5>

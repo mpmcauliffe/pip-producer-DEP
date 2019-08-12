@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ArticleContext from '../../context/articleContext/articleContext'
-import { FileUpload, } from '../react-components'
+import { FileUpload, BackToTop } from '../react-components'
 import { Button, ButtonSet, FormContainer, } from '../styled-components'
 import 'simplebar/dist/simplebar.min.css'
 
@@ -117,6 +117,8 @@ const Create = props => {
                     rows='40' 
                     style={{ fontSize: '2rem',
                         margin: '5rem 0' }} />
+
+                <BackToTop />
 
                 <div style={{ display: 'flex', 
                         justifyContent: 'space-between',

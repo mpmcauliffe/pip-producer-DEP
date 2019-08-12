@@ -2,15 +2,13 @@ import React, { Fragment, useEffect, useContext, useState, } from 'react'
 import AuthContext from '../../context/auth/authContext'
 import ArticleContext from '../../context/articleContext/articleContext'
 import { Link, } from 'react-router-dom'
-import { ArticleTypeToggle, BackToTop, EditBar, Scorebar, } from '../react-components'
+import { ArticleTypeToggle, BlogLink, BackToTop, EditBar, Scorebar, } from '../react-components'
 import {  
     MainContainer, 
     Slide, 
     SlideContainer, 
     Thumbnail, } from '../styled-components'
 import Loading from '../loading/Loading'
-import moment from 'moment'
-import { truncate, } from '../../helpers'
 
 
 const ListPage = () => {
@@ -43,8 +41,28 @@ const ListPage = () => {
                 
                 {type !== null && 
                     type.map(article => (
-                    <Fragment key={article._id}>
-                        <Link 
+                        <Fragment key={article._id}>
+                            <BlogLink article={article} />
+
+                            <EditBar 
+                                user={user} 
+                                article={article} />                   
+                        </Fragment>                       
+                    ))
+                }
+
+                <BackToTop />
+            </MainContainer>
+        )
+    }    
+}
+
+
+export { ListPage }
+
+
+/**
+ * <Link 
                             to={`/article/${article._id}`}
                             style={{ textDecoration: 'none', }} >
 
@@ -60,19 +78,4 @@ const ListPage = () => {
                                 </SlideContainer>
                             </Slide>
                         </Link>
-
-                        <EditBar 
-                            user={user} 
-                            article={article} />                   
-                    </Fragment>                       
-                    ))
-                }
-
-                <BackToTop />
-            </MainContainer>
-        )
-    }    
-}
-
-
-export { ListPage }
+ */

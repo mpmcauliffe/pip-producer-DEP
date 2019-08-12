@@ -7,6 +7,7 @@ import {
     CLEAR_SINGLE,
     FILTER_BY_TYPE,
     CLEAR_TYPE,
+    NEXT_ARTICLES,
 } from '../types'
 
 
@@ -44,15 +45,23 @@ export default (state, action) => {
             }
 
         case FILTER_BY_TYPE:
-                console.log(state.type)
             return {
                 ...state,
                 type: state.articles.filter(article => {
-                    console.log(typeof action.payload)
                     return article.isPublished === action.payload
                 })
             }
         
+        case NEXT_ARTICLES:
+            return {
+                ...state,
+                next: state.articles.filter((article, index) => {
+                    if (article._id !== action.payload && article.isPublished === true) {
+                        return article
+                    }
+                })
+            }
+
         default:
             return state
     }
