@@ -10,6 +10,7 @@ const authContributor   = require('../../middleware/authContributor')
 // @desc  Get ALL articles
 // @access Public
 router.get('/', auth, async (req, res) => {
+    console.log(process.env.NODE_ENV)
     try {
         const articles = await Article.find().sort({ date: -1 })
         res.json(articles)
