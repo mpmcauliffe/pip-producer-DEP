@@ -3,7 +3,7 @@ import AuthState from './context/auth/AuthState'
 import AdminState from './context/adminContext/AdminState'
 import ArticleState from './context/articleContext/ArticleState'
 import { Route, Switch } from 'react-router-dom'
-import { PrivateRoute } from './components/routes'
+import { PrivateRoute, Restricted, RestrictedAdmin, } from './components/routes'
 import {  
     Article,
     Create,
@@ -12,7 +12,6 @@ import {
     Login,
     NotFound,
     Register,
-    TestPage,
     Users,
 } from './components/pages'
 import {
@@ -49,35 +48,30 @@ function App(props) {
                             path='/login'
                             component={Login} />
 
-                        <Route /* PRIVATE */
+                        <PrivateRoute /* PRIVATE */
                             exact
                             path='/listpage'
                             component={ListPage} />
 
-                        <Route /* PRIVATE */
+                        <PrivateRoute /* PRIVATE */
                             exact
                             path='/article/:id'
                             component={Article} />
 
-                        <Route /* RESTRICTED */
+                        <Restricted /* RESTRICTED */
                             exact
                             path='/create'
                             component={Create} />
 
-                        <Route /* RESTRICTED */
+                        <Restricted /* RESTRICTED */
                             exact
                             path='/create/:articleId/:userId'
                             component={Create} />
                         
-                        <Route /* RESTRICTED */
+                        <RestrictedAdmin /* RESTRICTED */
                             exact
                             path='/users'
                             component={Users} />
-
-                        <Route /* RESTRICTED */
-                            exact
-                            path='/test'
-                            component={TestPage} />
 
                         <Route /* PUBLIC ALL OTHER POSSIBLE ROUTES */ 
                             component={NotFound} />

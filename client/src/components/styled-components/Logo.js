@@ -32,4 +32,8 @@ export const SmallIcon = styled.img`
         cursor: pointer;
         opacity: 1;
     }
+
+    @media (max-width: 769px) {
+        margin: 2rem 0; 
+    }
 `

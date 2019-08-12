@@ -3,7 +3,7 @@ import { Route, Redirect, } from 'react-router-dom'
 import AuthContext from '../../context/auth/authContext'
 
 
-const Restricted = ({ component: Component, ...rest }) => {
+const RestrictedAdmin = ({ component: Component, ...rest }) => {
     const authContext = useContext(AuthContext)
     const { isAuthenticated, user } = authContext
 
@@ -11,7 +11,7 @@ const Restricted = ({ component: Component, ...rest }) => {
         return (
             <Route 
                 { ...rest } 
-                render={props => user.role === 'admin' || user.role === 'contributor' 
+                render={props => user.role === 'admin'
                     ?   (
                             <Component { ...props } />
                     ) : (
@@ -25,4 +25,4 @@ const Restricted = ({ component: Component, ...rest }) => {
 }
 
 
-export { Restricted }
+export { RestrictedAdmin }

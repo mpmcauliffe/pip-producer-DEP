@@ -1,13 +1,13 @@
 const express       = require('express')
 const router        = express.Router()
 const User          = require('../../models/Users')
-const authRole      = require('../../middleware/authRole')
+const authAdmin      = require('../../middleware/authAdmin')
 
 
 // @route GET api/admin
 // @desc  Get ALL users
 // @access Public
-router.get('/', authRole, async (req, res) => {
+router.get('/', authAdmin, async (req, res) => {
 
     try {
         const users = await User.find().select('-password').sort({ name: 1 })
@@ -21,7 +21,7 @@ router.get('/', authRole, async (req, res) => {
 // @route       PUT api/admin
 // @desc        Update contact
 // @access      Private
-router.put('/', authRole, async (req, res) => {
+router.put('/', authAdmin, async (req, res) => {
 
     try {
         req.body.forEach(user => {

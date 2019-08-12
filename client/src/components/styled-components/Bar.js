@@ -13,8 +13,4 @@ export const Bar = styled.div`
     color: ${props => props.color || '#fafafa'}
     background-color: ${props => props.color || '#393939'};
     border: ${props => props.border || 'none'};
-
-    @media (max-width: 769px) {
-        
-    }
 `

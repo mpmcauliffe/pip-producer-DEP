@@ -1,14 +1,15 @@
 
-const express       = require('express')
-const router        = express.Router()
-const Article       = require('../../models/Articles')
-const auth          = require('../../middleware/auth')
+const express           = require('express')
+const router            = express.Router()
+const Article           = require('../../models/Articles')
+const auth              = require('../../middleware/auth')
+const authContributor   = require('../../middleware/authContributor')
 
 
 // @route GET api/articles
 // @desc  Get ALL articles
 // @access Public
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const articles = await Article.find().sort({ date: -1 })
         res.json(articles)
@@ -35,7 +36,7 @@ router.get('/:id', auth, async (req, res) => {
 // @route POST api/article
 // @desc  Create A article
 // @access Public
-router.post('/', auth, (req, res) => {
+router.post('/', authContributor, (req, res) => {
     const { title, author, date, picture, content, isPublished, } = req.body
 
     console.log(date)
@@ -56,7 +57,7 @@ router.post('/', auth, (req, res) => {
 // @route GET api/article
 // @desc  Get A SINGLE article FOR EDIT
 // @access Private
-router.get('/:articleId/:userId', auth, async (req, res) => {
+router.get('/:articleId/:userId', authContributor, async (req, res) => {
     const { articleId, userId, } = req.params
     
     //user: userId, 
@@ -73,7 +74,7 @@ router.get('/:articleId/:userId', auth, async (req, res) => {
 // @route       PUT api/articles/:id
 // @desc        Update article
 // @access      Private
-router.put('/:id', auth, async (req, res) => {
+router.put('/:id', authContributor, async (req, res) => {
     const { title, author, date, picture, content, isPublished, } = req.body
 
     const updatedFields = {}
@@ -107,7 +108,7 @@ router.put('/:id', auth, async (req, res) => {
 // @route DELETE api/article/:id
 // @desc  Delete A article
 // @access Public
-router.delete('/:id', auth, (req, res) => {
+router.delete('/:id', authContributor, (req, res) => {
     Article.findById(req.params.id)
         .then(article => article.remove()
             .then(() => res.json({ success: true })))

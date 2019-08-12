@@ -1,12 +1,14 @@
 
-const express       = require('express')
-const fileUpload    = require('express-fileupload')
-const router        = express.Router()
+const express           = require('express')
+const fileUpload        = require('express-fileupload')
+const router            = express.Router()
+const authContributor   = require('../../middleware/authContributor')
+
 
 
 router.use(fileUpload())
 
-router.post('/', (req, res) => {
+router.post('/', authContributor, (req, res) => {
     
     console.log(__dirname)
     if(req.file === null) {

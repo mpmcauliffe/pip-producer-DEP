@@ -24,7 +24,7 @@ const Create = props => {
         if (single !== null) {
             setData(single[0])
             setButonActive(single[0].isPublished)
-            console.log(data.picture)
+            window.scrollTo(0,0)
         } else {
             setData({
                 title: '',

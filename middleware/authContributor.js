@@ -13,7 +13,8 @@ module.exports = function(req, res, next) {
     try {
         const decoded = jwtDecode(token) 
 
-        if(decoded.user.role === 'admin') {
+        if(decoded.user.role === 'admin' || decoded.user.role === 'contributor') {
+            req.user = decoded.user
             next()
         } else {
             return res.status(401).send('Insufficient role')
