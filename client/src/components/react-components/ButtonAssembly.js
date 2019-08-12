@@ -13,9 +13,8 @@ const style = {
     },
     outerColumn: {
         display: 'flex',
-        height: '50vh',
+        height: '100%',
         flexDirection: 'column',
-        justifyContent: 'space-evenly',
     },
     right: {
         display: 'flex', 
@@ -23,9 +22,9 @@ const style = {
     },
 }
 
-const ButtonAssembly = () => {
+const ButtonAssembly = ({ clearToggle, }) => {
     const authContext = useContext(AuthContext)
-    const { logout, isAuthenticated, } = authContext
+    const { logout, isAuthenticated, user, } = authContext
 
     const articleContext = useContext(ArticleContext)
     const { clearSingle, } = articleContext
@@ -36,71 +35,78 @@ const ButtonAssembly = () => {
 
 
     const authLinks = (
-        <div style={window.innerWidth > 768 ? style.outerRow : style.outerColumn}>
-            <div>
-                <Link to='/listpage'>
-                    <Button>Blog</Button>
-                </Link>
-            </div>
+        <Fragment>
+        {user !== null &&
+            <div style={window.innerWidth > 768 ? style.outerRow : style.outerColumn}>
+                <div>
+                    <Link to='/listpage' onClick={clearToggle}>
+                        <Button>Blog</Button>
+                    </Link>
+                </div>
 
-            <div style={window.innerWidth > 768 ? style.right : style.outerColumn}>
-                <Link to='/register'>
+                <div style={window.innerWidth > 768 ? style.right : style.outerColumn}>
+                    {user.role === 'admin' &&
+                        <Link to='/users' onClick={clearToggle}>
+                            <Button style={{ marginRight: '3rem', }}>
+                                Users
+                            </Button>
+                        </Link>
+                    }
+                    
+                    
+                    {user.role === 'admin' || user.role === 'contributor' 
+                        ?   (
+                                <Link 
+                                    to='/create'
+                                    onClick={() => clearSingle()} >
+                                    <Button style={{ marginRight: '3rem', }} onClick={clearToggle}>
+                                        Create
+                                    </Button>
+                                </Link>
+                        ) : (null)
+                    }
+                    
+
+                    <Link to='/login' onClick={clearToggle}>
+                        <Button onClick={onLogout}>
+                            Logout    
+                        </Button>
+                    </Link>         
+                </div>
+            </div>
+        }
+        </Fragment>
+    )
+
+    const welcomeLinks = (
+        <div style={window.innerWidth > 768 ? style.outerRow : style.outerColumn}>
+            <div />
+            <div>
+                <Link to='/register' onClick={clearToggle}>
                     <Button style={{ marginRight: '3rem', }}>
                         Register
                     </Button>
                 </Link>
 
-                <Link to='/login'>
+                <Link to='/login' onClick={clearToggle}>
                     <Button>
                         Login
-                    </Button>
-                </Link>         
-            </div>
-        </div>
-        
-    )
-
-    const welcomeLinks = (
-        <div style={window.innerWidth > 768 ? style.outerRow : style.outerColumn}>
-            <div>
-                <Link to='/listpage'>
-                    <Button>Blog</Button>
-                </Link>
-            </div>
-
-            <div style={window.innerWidth > 768 ? style.right : style.outerColumn}>
-                <Link to='/users'>
-                    <Button style={{ marginRight: '3rem', }}>
-                        Users
-                    </Button>
-                </Link>
-
-                <Link 
-                    to='/create'
-                    onClick={() => clearSingle()} >
-                    <Button style={{ marginRight: '3rem', }}>
-                        Create
-                    </Button>
-                </Link>
-
-                <Button onClick={onLogout}>
-                    Logout    
-                </Button>
-            </div>  
-        </div>
-        
+                    </Button>           
+                </Link>   
+            </div>                       
+        </div>   
     )
 
     const constructionLinks = (
         <div style={window.innerWidth > 768 ? style.outerRow : style.outerColumn}>
             <div>
-                <Link to='/listpage'>
+                <Link to='/listpage' onClick={clearToggle}>
                     <Button>Blog</Button>
                 </Link>
             </div>
         
             <div style={window.innerWidth > 768 ? style.right : style.outerColumn}>
-                <Link to='/users'>
+                <Link to='/users' onClick={clearToggle}>
                     <Button style={{ marginRight: '3rem', }}>
                         Users
                     </Button>
@@ -109,36 +115,36 @@ const ButtonAssembly = () => {
                 <Link 
                     to='/create'
                     onClick={() => clearSingle()} >
-                    <Button style={{ marginRight: '3rem', }}>
+                    <Button style={{ marginRight: '3rem', }} onClick={clearToggle}>
                         Create
                     </Button>
                 </Link>
 
-                <Link to='/register'>
+                <Link to='/register' onClick={clearToggle}>
                     <Button style={{ marginRight: '3rem', }}>
                         Register
                     </Button>
                 </Link>
 
-                <Link to='/login'>
+                <Link to='/login' onClick={clearToggle}>
                     <Button>
                         Login
                     </Button>
                     
-                <Button onClick={onLogout}>
-                    Logout    
-                </Button>
+                    <Button onClick={onLogout}>
+                        Logout    
+                    </Button>
                 </Link>
             </div>
         </div>
     )
 
 
-    return (
-        <Fragment>
-            {constructionLinks}
-        </Fragment>
-    )
+    if (user === null) {
+        return welcomeLinks
+    } else {
+        return authLinks
+    }
 }
 
 

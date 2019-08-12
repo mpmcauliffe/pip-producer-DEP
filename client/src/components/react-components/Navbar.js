@@ -41,7 +41,9 @@ const Navbar = props => {
             </Bar>
             {drawerVisible && 
                 <Fragment>
-                    <Drawer onClick={toggleDrawer} />
+                    <Drawer>
+                        <ButtonAssembly clearToggle={toggleDrawer} />
+                    </Drawer>
                     <FadeContainer onClick={toggleDrawer} />
                 </Fragment>    
             }

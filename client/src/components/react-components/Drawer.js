@@ -2,7 +2,7 @@ import React from 'react'
 import { ButtonAssembly, } from '../react-components'
 
 
-const Drawer = () => {
+const Drawer = props => {
     
     return (
         <div 
@@ -13,9 +13,10 @@ const Drawer = () => {
                 top: '11vh', 
                 right: 0,
                 padding: '3rem',
-                background: '#393939' }} >
+                background: '#393939',
+                boxShadow: '-7px 10px 5px 0px rgba(0,0,0,0.4)', }} >
 
-            <ButtonAssembly />
+            {props.children}
         </div>
     )
 }
