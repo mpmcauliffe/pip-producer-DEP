@@ -47,19 +47,13 @@ export default (state, action) => {
         case FILTER_BY_TYPE:
             return {
                 ...state,
-                type: state.articles.filter(article => {
-                    return article.isPublished === action.payload
-                })
+                type: state.articles.filter(article => article.isPublished === action.payload)
             }
         
         case NEXT_ARTICLES:
             return {
                 ...state,
-                next: state.articles.filter((article, index) => {
-                    if (article._id !== action.payload && article.isPublished === true) {
-                        return article
-                    }
-                })
+                next: state.articles.filter(article => article.isPublished === true)
             }
 
         default:

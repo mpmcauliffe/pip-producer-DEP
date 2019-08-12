@@ -21,8 +21,9 @@ const FileUpload = ({ setImagePath, picture }) => {
             setMessage('Only .png, .jpg, .jpeg, and .svg files are acceptable')
         }
     }
+    //console.log(uploadFile)
+    console.log(picture)
 
-    console.log(typeof picture)
 
     const onSubmit = async e => {
         e.preventDefault()
@@ -98,6 +99,7 @@ const FileUpload = ({ setImagePath, picture }) => {
 
             >   Upload
             </Button>
+
             {uploadedFile || picture 
                 ?  (
                         <div className='row mt-5'>

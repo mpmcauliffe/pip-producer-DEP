@@ -141,9 +141,9 @@ const ArticleState = props => {
     const filterByType = articleStatus => dispatch({ type: FILTER_BY_TYPE, payload: articleStatus, })
 
     // controls next array for article links to appear at bottom of article
-    const getNextArticles = id => {
+    const getNextArticles = () => {
         if (state.articles !== null) {
-            dispatch({ type: NEXT_ARTICLES, payload: id }) 
+            dispatch({ type: NEXT_ARTICLES }) 
         }
     }
 

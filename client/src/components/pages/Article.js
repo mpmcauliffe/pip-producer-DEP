@@ -12,16 +12,14 @@ const Article = props => {
 
     useEffect(() => {
         getSingle(props.match.params.id)
-        window.scrollTo(0,0)
+        getNextArticles()
 
+        window.scrollTo(0,0)
     // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
-        if (single !== null) { 
-            getNextArticles(single._id)
-            window.scrollTo(0,0)
-        }   
+        window.scrollTo(0,0)
     }, [single])
 
 
@@ -56,8 +54,10 @@ const Article = props => {
                         {next.length > 0 && 
                             next.slice(0, 5).map(article => (
                                 <Fragment key={article._id}>
-                                    <BlogLink article={article} />                  
-                                </Fragment>                       
+                                    {article._id !== single._id &&
+                                        <BlogLink article={article} />                  
+                                    }
+                                </Fragment>                      
                             ))
                         }
 
