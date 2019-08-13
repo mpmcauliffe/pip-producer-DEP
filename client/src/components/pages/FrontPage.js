@@ -1,10 +1,15 @@
-import React, { Fragment, } from 'react'
+import React, { Fragment, useEffect, } from 'react'
 import { MainLogo, } from '../styled-components'
 import { BackToTop, PipButton, Scorebar, } from '../react-components'
 
 
 const FrontPage = () => {
 
+    useEffect(() => {
+        window.scrollTo(0,0)
+        
+    // eslint-disable-next-line
+    }, [])
 
     return (
         <Fragment>

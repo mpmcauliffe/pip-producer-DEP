@@ -10,7 +10,6 @@ import {
     DELETE_ARTICLE,     // cruD
     CLEAR_SINGLE,
     FILTER_BY_TYPE,
-    CLEAR_TYPE,
     NEXT_ARTICLES,
 } from '../types'
 
@@ -47,9 +46,9 @@ const ArticleState = props => {
         } catch (error) {
             console.log(error)
 
-            setTimeout(() => {
-                getArticles()
-            }, 2000);
+            // setTimeout(() => {
+            //     getArticles()
+            // }, 2000);
         }
     }
 
@@ -127,7 +126,7 @@ const ArticleState = props => {
             
             dispatch({ 
                 type: DELETE_ARTICLE, 
-                payload: id
+                payload: res.data
             })
         } catch (error) {
             console.log(error)

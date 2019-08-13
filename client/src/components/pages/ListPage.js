@@ -1,13 +1,8 @@
-import React, { Fragment, useEffect, useContext, useState, } from 'react'
+import React, { Fragment, useEffect, useContext, } from 'react'
 import AuthContext from '../../context/auth/authContext'
 import ArticleContext from '../../context/articleContext/articleContext'
-import { Link, } from 'react-router-dom'
-import { ArticleTypeToggle, BlogLink, BackToTop, EditBar, Scorebar, } from '../react-components'
-import {  
-    MainContainer, 
-    Slide, 
-    SlideContainer, 
-    Thumbnail, } from '../styled-components'
+import { ArticleTypeToggle, BlogLink, BackToTop, EditBar, } from '../react-components'
+import { MainContainer, } from '../styled-components'
 import Loading from '../loading/Loading'
 
 
@@ -16,7 +11,7 @@ const ListPage = () => {
     const { loadUser, user, } = authContext
 
     const articleContext = useContext(ArticleContext)
-    const { getArticles, type, filterByType, clearSingle, articles, } = articleContext
+    const { getArticles, type, clearSingle, articles, } = articleContext
 
     useEffect(() => {
         loadUser()

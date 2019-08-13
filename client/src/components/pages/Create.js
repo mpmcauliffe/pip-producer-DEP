@@ -35,7 +35,6 @@ const Create = props => {
                 isPublished: false,
             })
         }
-        //window.scrollTo(0,0)
 
     // eslint-disable-next-line
     }, [single])

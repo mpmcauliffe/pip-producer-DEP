@@ -30,4 +30,5 @@ router.post('/', authContributor, (req, res) => {
 
 module.exports = router
 
+// for development
 //`${__dirname}/../../client/public/uploads/${file.name}`

@@ -8,7 +8,7 @@ import moment from 'moment'
 
 const Article = props => {
     const articleContext = useContext(ArticleContext)
-    const { single, getSingle, clearSingle, getNextArticles, next, } = articleContext
+    const { single, getSingle, getNextArticles, next, } = articleContext
 
     useEffect(() => {
         getSingle(props.match.params.id)

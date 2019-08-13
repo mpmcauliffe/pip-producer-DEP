@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, } from 'react'
+import React, { Fragment, useContext, useEffect, } from 'react'
 import AuthContext from '../../context/auth/authContext'
 import ArticleContext from '../../context/articleContext/articleContext'
 import { Link, } from 'react-router-dom'
@@ -24,10 +24,16 @@ const style = {
 
 const ButtonAssembly = ({ clearToggle, }) => {
     const authContext = useContext(AuthContext)
-    const { logout, isAuthenticated, user, } = authContext
+    const { loadUser, logout, isAuthenticated, user, loading, } = authContext
 
     const articleContext = useContext(ArticleContext)
     const { clearSingle, } = articleContext
+
+    useEffect(() => {
+        loadUser()
+
+    // eslint-disable-next-line
+    }, [])
 
     const onLogout = () => {
         logout()
@@ -97,50 +103,8 @@ const ButtonAssembly = ({ clearToggle, }) => {
         </div>   
     )
 
-    const constructionLinks = (
-        <div style={window.innerWidth > 768 ? style.outerRow : style.outerColumn}>
-            <div>
-                <Link to='/listpage' onClick={clearToggle}>
-                    <Button>Blog</Button>
-                </Link>
-            </div>
-        
-            <div style={window.innerWidth > 768 ? style.right : style.outerColumn}>
-                <Link to='/users' onClick={clearToggle}>
-                    <Button style={{ marginRight: '3rem', }}>
-                        Users
-                    </Button>
-                </Link>
 
-                <Link 
-                    to='/create'
-                    onClick={() => clearSingle()} >
-                    <Button style={{ marginRight: '3rem', }} onClick={clearToggle}>
-                        Create
-                    </Button>
-                </Link>
-
-                <Link to='/register' onClick={clearToggle}>
-                    <Button style={{ marginRight: '3rem', }}>
-                        Register
-                    </Button>
-                </Link>
-
-                <Link to='/login' onClick={clearToggle}>
-                    <Button>
-                        Login
-                    </Button>
-                    
-                    <Button onClick={onLogout}>
-                        Logout    
-                    </Button>
-                </Link>
-            </div>
-        </div>
-    )
-
-
-    if (user === null) {
+    if (!isAuthenticated && !loading) {
         return welcomeLinks
     } else {
         return authLinks
@@ -149,3 +113,13 @@ const ButtonAssembly = ({ clearToggle, }) => {
 
 
 export { ButtonAssembly }
+
+/*
+return (
+        <Fragment>
+            {!isAuthenticated && !loading ? welcomeLinks : authLinks}
+        </Fragment>
+        
+    )
+
+*/

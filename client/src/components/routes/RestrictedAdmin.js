@@ -1,11 +1,13 @@
 import React, { useContext, } from 'react'
 import { Route, Redirect, } from 'react-router-dom'
 import AuthContext from '../../context/auth/authContext'
+import Loading from '../loading/Loading'
 
 
 const RestrictedAdmin = ({ component: Component, ...rest }) => {
     const authContext = useContext(AuthContext)
-    const { isAuthenticated, user } = authContext
+    const { user, } = authContext
+
 
     if (user !== null) {
         return (
@@ -20,7 +22,7 @@ const RestrictedAdmin = ({ component: Component, ...rest }) => {
                 } />
         )    
     } else {
-        return <Redirect to='/' />
+        return <Loading />
     }
 }
 

@@ -37,9 +37,9 @@ const AdminState = props => {
         } catch (error) {
             console.log(error)
 
-            setTimeout(() => {
-                getUsers()
-            }, 2000);
+            // setTimeout(() => {
+            //     getUsers()
+            // }, 2000);
         }
     }
 

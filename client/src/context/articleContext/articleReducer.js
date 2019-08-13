@@ -6,7 +6,6 @@ import {
     DELETE_ARTICLE,
     CLEAR_SINGLE,
     FILTER_BY_TYPE,
-    CLEAR_TYPE,
     NEXT_ARTICLES,
 } from '../types'
 

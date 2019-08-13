@@ -1,13 +1,21 @@
-import React, { useContext, } from 'react'
+import React, { useContext, useEffect, } from 'react'
 import { Route, Redirect, } from 'react-router-dom'
 import AuthContext from '../../context/auth/authContext'
+import Loading from '../loading/Loading'
 
 
 const Restricted = ({ component: Component, ...rest }) => {
     const authContext = useContext(AuthContext)
-    const { isAuthenticated, user } = authContext
+    const { loadUser, isAuthenticated, user, loading, } = authContext
 
-    if (user !== null) {
+    useEffect(() => {
+        loadUser()
+
+    // eslint-disable-next-line
+    }, [])
+
+
+    if (isAuthenticated && !loading && user !== null) {
         return (
             <Route 
                 { ...rest } 
@@ -15,12 +23,12 @@ const Restricted = ({ component: Component, ...rest }) => {
                     ?   (
                             <Component { ...props } />
                     ) : (
-                            <Redirect to='/' />
+                            <Redirect to='/listpage' />
                     )
                 } />
-        )    
+        )
     } else {
-        return <Redirect to='/' />
+        return <Loading />
     }
 }
 
