@@ -5,7 +5,7 @@ const Drawer = props => {
     
     return (
         <div 
-            style={{ position: 'absolute', 
+            style={{ position: 'fixed', 
                 zIndex: 10,
                 height: '89vh', 
                 width: '19rem', 
