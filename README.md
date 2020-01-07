@@ -1,2 +1,3 @@
-# pip-deploy
-piece together pip-producer step by step for deployment
+# Pip Producer
+
+Instructions for this site can be found here https://mpmcauliffe.github.io/blog-instructions/
