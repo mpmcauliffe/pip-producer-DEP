@@ -8,7 +8,7 @@ const { check, validationResult, } = require('express-validator')
 const User                         = require('../../models/Users')
 const router                       = express.Router()
 
-const secret                       = config.get('JWT_SECRET') || process.env.JWT_SECRET
+const secret                       = process.env.JWT_SECRET || config.get('JWT_SECRET')
 
 
 // @route       POST api/users

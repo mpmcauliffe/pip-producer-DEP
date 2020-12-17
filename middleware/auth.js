@@ -1,7 +1,7 @@
 const jwt           = require('jsonwebtoken')
 const config        = require('config')
 
-const secret        = config.get('JWT_SECRET') || process.env.JWT_SECRET
+const secret        = process.env.JWT_SECRET || config.get('JWT_SECRET')
 
 module.exports = function(req, res, next) {
     // get token
