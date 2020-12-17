@@ -8,6 +8,8 @@ const User                         = require('../../models/Users')
 const config                       = require('config')
 const router                       = express.Router()
 
+const secret                       = config.get('JWT_SECRET') || process.env.JWT_SECRET
+
 
 // @route       GET api/auth
 // @desc        GET logged in user
@@ -51,7 +53,7 @@ router.post('/', [
 
             jwt.sign(
                 payload, 
-                config.get('JWT_SECRET'), 
+                secret, 
                 {
                     expiresIn: 360000
                 }, 
