@@ -33,7 +33,8 @@ app.use('/api/upload', upload)
 app.use('/api/admin', admin)
 
 // AWS Ubuntu 18.04 AND OTHERS
-app.use(express.static(path.join(__dirname, 'client', 'build')))
+// ***CANNOT USE
+// app.use(express.static(path.join(__dirname, 'client', 'build')))
 
 // Heroku
 /*** serve static assets in production ***/
