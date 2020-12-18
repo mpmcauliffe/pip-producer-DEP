@@ -13,5 +13,6 @@ Eva Bear	eva@bear.com	123456	User
 
 ## Notice
 
-This site is currently active on Heroku which uses an ephemeral file system so images uploaded through the create page will persist into the next dyno session.
+This site is currently active on Heroku which uses an ephemeral file system so images uploaded through 
+the create page will NOT persist into the next dyno session.
 For more information ... https://help.heroku.com/K1PPS2WM/why-are-my-file-uploads-missing-deleted
