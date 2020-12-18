@@ -17,7 +17,7 @@ router.post('/', authContributor, (req, res) => {
 
     //console.log(req.files)
     const file = req.files.file
-
+    // ${__dirname}/../../client/public/uploads/${file.name}
     file.mv(`${__dirname}/../../client/build/uploads/${file.name}`, err => {
         if(err) {
             console.error(err)
@@ -31,4 +31,5 @@ router.post('/', authContributor, (req, res) => {
 module.exports = router
 
 // for development
-//`${__dirname}/../../client/public/uploads/${file.name}`
+//``
+
