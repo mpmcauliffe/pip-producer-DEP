@@ -29,7 +29,12 @@ const ListPage = () => {
 
     } else {
         return (
-            <MainContainer>
+            <MainContainer>     
+                <p style={{ color: '#ff0000' }}>This site is currently 
+                active on Heroku which uses an ephemeral file system so 
+                images uploaded through the create page will persist
+                into the next dyno session.</p>
+
                 <div style={{ margin: '3vh auto' }}>
                     <ArticleTypeToggle user={user} /> 
                 </div>
