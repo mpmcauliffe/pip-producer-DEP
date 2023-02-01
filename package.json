@@ -33,7 +33,7 @@
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
-    "mongoose": "^5.12.3",
+    "mongoose": "^5.13.15",
     "nodemon": "^1.19.1"
   }
 }
